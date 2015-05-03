@@ -3,6 +3,6 @@
   remote_user: ubuntu
   sudo: true
   roles:
-#    - ansible-basic-server
-#    - ansible-elasticsearch
+    - ansible-basic-server
+    - ansible-elasticsearch
     - ansible-rvm

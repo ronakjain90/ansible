@@ -1,0 +1,8 @@
+---
+- hosts: all
+  remote_user: ubuntu
+  sudo: true
+  roles:
+#    - ansible-basic-server
+#    - ansible-elasticsearch
+    - rvm1-ansible

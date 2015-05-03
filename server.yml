@@ -5,4 +5,4 @@
   roles:
 #    - ansible-basic-server
 #    - ansible-elasticsearch
-    - rvm1-ansible
+    - ansible-rvm

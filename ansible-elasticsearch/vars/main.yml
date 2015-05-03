@@ -1,6 +1,6 @@
 ---
-cluster: sfhsearch
-node: sfhnode
+cluster: cluster-name
+node: node
 num_replicas: 1
 num_shards: 5
-index_name: serversforhackers
+index_name: index

@@ -4,5 +4,6 @@
   sudo: true
   roles:
     - ansible-basic-server
-    - ansible-elasticsearch
     - ansible-rvm
+    - ansible-elasticsearch
+    - ansible-redis

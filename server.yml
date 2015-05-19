@@ -7,3 +7,4 @@
     - ansible-rvm
     - ansible-elasticsearch
     - ansible-redis
+    - ansible-mongodb

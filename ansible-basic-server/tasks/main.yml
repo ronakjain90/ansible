@@ -13,6 +13,7 @@
     - vim
     - git
     - mlocate
+    - locales
   notify:
     - Start NTP
 

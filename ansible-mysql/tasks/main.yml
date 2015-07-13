@@ -1,0 +1,9 @@
+- name: install Mysql
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - mysql-server
+
+- name: install php5-* extensions
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - libapache2-mod-auth-mysql

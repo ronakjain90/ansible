@@ -8,3 +8,6 @@
     - ansible-elasticsearch
     - ansible-redis
     - ansible-mongodb
+    - ansible-php
+    - ansible-mysql
+    - ansible-apache

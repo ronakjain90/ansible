@@ -1,0 +1,3 @@
+- name: Add SSH Keys into the Ubuntu Remote Server
+  authorized_key: user=ubuntu
+                  key="{{ lookup('file', '/Users/Chetan/Desktop/manju.pub') }}"

@@ -3,12 +3,12 @@
   remote_user: ubuntu
   sudo: true
   roles:
-#    - ansible-basic-server
-#    - ansible-rvm
-#    - ansible-elasticsearch
-#    - ansible-redis
-#    - ansible-mongodb
-#    - ansible-mysql
-#    - ansible-apache
-#    - ansible-php
-
+    #- ansible-basic-server
+    #- ansible-rvm
+    #- ansible-elasticsearch
+    #- ansible-redis
+    #- ansible-mongodb
+    #- ansible-mysql
+    #- ansible-apache
+    #- ansible-php
+     - ansible-ssh

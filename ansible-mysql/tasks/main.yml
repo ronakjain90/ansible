@@ -8,4 +8,3 @@
   with_items:
     - libapache2-mod-auth-mysql
     - libapache2-mod-php5
-

@@ -15,6 +15,7 @@
     - mlocate
     - locales
     - make
+    - libgmp3-dev
   notify:
     - Start NTP
 

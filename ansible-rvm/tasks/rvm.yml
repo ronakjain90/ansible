@@ -49,3 +49,7 @@
   command: '{{ rvm1_rvm }} autolibs {{ rvm1_autolib_mode }}'
   when: not rvm_binary.stat.exists
   sudo_user: '{{ rvm1_user }}'
+
+- name: Install Bundler
+  command: 'sudo -iu {{ rvm1_user }} gem install bundler'
+

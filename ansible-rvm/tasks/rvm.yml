@@ -50,6 +50,6 @@
   when: not rvm_binary.stat.exists
   sudo_user: '{{ rvm1_user }}'
 
-- name: Install Bundler
-  command: 'sudo -iu {{ rvm1_user }} gem install bundler'
+- name: Install Bundle
+  command: 'sudo -iu {{ rvm1_user }} gem install bundle'
 

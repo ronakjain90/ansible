@@ -1,4 +1,10 @@
 ---
+- name: Install PIP
+  apt: pkg=python-pip state=installed update_cache=true
+
+- name: Install Python HTTPLib
+  pip: name=httplib2 state=present
+
 - name: Install apt-transport-https
   pip: name=apt-transport-https state=present
 

@@ -10,10 +10,11 @@
 
 - name: Add Elasticsearch Key
   apt_key:
-    url: 'https://packages.elastic.co/GPG-KEY-elasticsearch'
+    url: 'https://artifacts.elastic.co/GPG-KEY-elasticsearch'
 
 - name: Add Elasticsearch Repository
-  apt_repository: repo='deb https://packages.elastic.co/elasticsearch/2.x/debian stable main' state=present
+  apt_repository: repo='deb https://artifacts.elastic.co/packages/5.x/apt stable main' state=present
+
 
 - name: Install Elasticsearch
   apt: pkg=elasticsearch state=installed update_cache=yes
@@ -23,9 +24,6 @@
 
 - name: Enable Elasticsearch (Start on boot)
   service: name=elasticsearch enabled=yes
-
-- name: Configure Elasticsearch
-  template: src=elasticsearch.yml.j2 dest=/etc/elasticsearch/elasticsearch.yml
 
 - name: Check If Index Exists
   uri: url='http://localhost:9200/{{ index_name }}'

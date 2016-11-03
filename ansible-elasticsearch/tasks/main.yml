@@ -1,5 +1,5 @@
 ---
-- name: Install Python Apt-transport-https
+- name: Install apt-transport-https
   pip: name=apt-transport-https state=present
 
 - name: Add Java (OpenJDK) Repository

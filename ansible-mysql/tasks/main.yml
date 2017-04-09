@@ -2,6 +2,8 @@
   apt: pkg={{ item }} state=latest
   with_items:
     - mysql-server
+    - ruby-mysql
+    - libmysqlclient-dev
 
 - name: install php5-* extensions
   apt: pkg={{ item }} state=latest

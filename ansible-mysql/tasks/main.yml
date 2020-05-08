@@ -4,9 +4,23 @@
     - mysql-server
     - ruby-mysql
     - libmysqlclient-dev
+    - python-mysqldb
+    - php-mysql
 
 - name: install php5-* extensions
   apt: pkg={{ item }} state=latest
   with_items:
     - libapache2-mod-auth-mysql
     - libapache2-mod-php5
+
+- name: start mysql service
+  service: name={{ item }} state=started enabled=yes
+  with_items:
+    - mysql
+
+- name: Create a new user for connections
+  mysql_user: 
+    name={{ mysqlusername }}
+    password={{ mysqlpassword }}
+    priv='*.*:ALL'
+    state=present

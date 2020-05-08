@@ -1,0 +1,17 @@
+---
+
+- hosts: remote_server
+  gather_facts: yes
+  become: yes
+
+  vars:
+    NODEJS_VERSION: "12"  
+    ansible_distribution_release: "xenial"
+
+  roles:
+    - ansible-clone-repo
+    - ansible-nodejs
+    - ansible-erlang-elixir
+    - ansible-phoenix
+    - ansible-mysql
+    - ansible-deploy-app

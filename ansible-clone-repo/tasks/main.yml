@@ -1,0 +1,2 @@
+- name: clone git repository
+  git: repo=https://{{ githubuser }}:{{ githubpassword }}@github.com{{ githubrepo }} dest=/root/app

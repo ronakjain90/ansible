@@ -13,5 +13,5 @@
     - ansible-nodejs
     - ansible-erlang-elixir
     - ansible-phoenix
-    - ansible-mysql-py
+    - ansible-mysql
     - ansible-deploy-app

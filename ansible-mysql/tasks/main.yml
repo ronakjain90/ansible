@@ -4,7 +4,6 @@
     - mysql-server
     - ruby-mysql
     - libmysqlclient-dev
-    - mysql-server
     - python-mysqldb
     - php-mysql
 

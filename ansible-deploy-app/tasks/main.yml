@@ -1,6 +1,6 @@
 - name: deploy script
   raw: |
-    cd app
+    cd var/www/{{ appname }}
     export SECRET_KEY_BASE={{ secretkeybase }}
     export DATABASE_URL=ecto://{{ mysqlusername }}:{{ mysqlpassword }}@localhost/{{ proddbname }}
     mix deps.get --only prod
@@ -11,5 +11,4 @@
     MIX_ENV=prod mix ecto.create
     MIX_ENV=prod mix ecto.migrate
     MIX_ENV=prod mix run priv/repo/seeds.exs
-    MIX_ENV=prod mix run priv/repo/fd_rates.exs
     PORT=4000 MIX_ENV=prod elixir --erl "-detached" -S mix phx.server

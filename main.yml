@@ -5,8 +5,12 @@
   become: yes
 
   vars:
-    NODEJS_VERSION: "12"  
+    NODEJS_VERSION: "12"
     ansible_distribution_release: "xenial"
+    nginx_revproxy_sites:
+      test.acuments.com: {appname: 'test', port: 5000, socket: true}
+      test1.acuments.com: {appname: 'test1', port: 3000, socket: false}
+      test2.acuments.com: {appname: 'test2', port: 4004, socket: false}
 
   roles:
     - ansible-clone-repo

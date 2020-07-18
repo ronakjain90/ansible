@@ -20,3 +20,4 @@
     - ansible-mysql
     - ansible-nginx
     - ansible-deploy-app
+    - ansible-deploy-user

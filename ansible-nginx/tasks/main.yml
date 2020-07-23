@@ -1,0 +1,56 @@
+---
+- name: ensure nginx is at the latest version
+  apt:
+    name: nginx
+    state: latest
+    update_cache: true
+
+  notify: start nginx
+
+- name: install certbot for nginx
+  apt:
+    name: python3-certbot-nginx
+    state: latest
+    update_cache: true
+
+- name: install software properties common
+  apt:
+    name: software-properties-common
+    state: present
+
+- name: Add certbot repository
+  apt_repository:
+   repo: 'ppa:certbot/certbot'
+
+- name: install certbot
+  apt:
+    name: certbot
+    state: latest
+
+- name: Generate new certificate for each domain
+  shell: "certbot certonly --nginx --noninteractive --agree-tos --email {{ certbot_admin_email }} -d {{ item.key }}"
+  with_dict: "{{ nginx_revproxy_sites }}"
+
+- name: Nginx configuration for sites with socket connections
+  template:
+    src=nginx-template-socket.conf.j2
+    dest=/etc/nginx/sites-enabled/{{item.key}}.conf
+    owner=root
+    group=root
+  with_dict: "{{ nginx_revproxy_sites }}"
+  when: item.value.socket == true
+
+- name: Nginx configuration for sites without socket connection
+  template:
+    src=nginx-template.conf.j2
+    dest=/etc/nginx/sites-enabled/{{item.key}}.conf
+    owner=root
+    group=root
+  with_dict: "{{ nginx_revproxy_sites }}"
+  when: item.value.socket == false
+
+- name: syslink for sites-available
+  raw: ln -s -f /etc/nginx/sites-enabled/{{item.key}}.conf /etc/nginx/sites-available/{{item.key}}.conf
+  with_dict: "{{ nginx_revproxy_sites }}"
+
+  notify: reload nginx

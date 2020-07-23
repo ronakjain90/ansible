@@ -11,4 +11,7 @@
     MIX_ENV=prod mix ecto.create
     MIX_ENV=prod mix ecto.migrate
     MIX_ENV=prod mix run priv/repo/seeds.exs
-    PORT=4000 MIX_ENV=prod elixir --erl "-detached" -S mix phx.server
+    PORT={{ port }} MIX_ENV=prod elixir --erl "-detached" -S mix phx.server
+
+
+

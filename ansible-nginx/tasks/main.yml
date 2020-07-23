@@ -28,7 +28,7 @@
     state: latest
 
 - name: Generate new certificate for each domain
-  shell: "certbot certonly --nginx --noninteractive --agree-tos --email {{ certbot_admin_email }} -d {{ item.key }}"
+  shell: "certbot certonly --nginx --noninteractive --agree-tos --email {{ item.value.certbot_admin_email }} -d {{ item.key }}"
   with_dict: "{{ nginx_revproxy_sites }}"
 
 - name: Nginx configuration for sites with socket connections
@@ -54,3 +54,6 @@
   with_dict: "{{ nginx_revproxy_sites }}"
 
   notify: reload nginx
+
+
+  http://172.105.49.38/assets/application-226c73b959b5087f4dbd210d18c905958c8491ddd0d51c8bec8ec713947142dd.css

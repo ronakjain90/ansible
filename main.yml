@@ -19,5 +19,6 @@
     - ansible-phoenix
     - ansible-mysql
     - ansible-nginx
+    - ansible-lua-resty-auto-ssl
     - ansible-deploy-app
     - ansible-deploy-user

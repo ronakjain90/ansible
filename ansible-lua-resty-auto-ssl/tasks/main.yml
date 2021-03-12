@@ -1,0 +1,62 @@
+- name: install software properties common
+  apt:
+    name: software-properties-common
+    state: present
+
+- name: Add certbot repository
+  apt_repository:
+   repo: 'ppa:certbot/certbot'
+
+- name: install certbot
+  apt:
+    name: certbot
+    state: latest
+
+- name: install prereq.
+  shell: "sudo apt-get -y install --no-install-recommends wget gnupg ca-certificates"
+
+- name: Import GCP key from openresty Server
+  shell: "wget -O - https://openresty.org/package/pubkey.gpg | sudo apt-key add -"
+
+- name: Add Repo name
+  shell: echo "deb http://openresty.org/package/ubuntu $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/openresty.list
+
+- name: UPDATE apt_repository
+  shell: "sudo apt-get update"
+
+- name: install openresty
+  shell: "sudo apt-get -y install openresty"
+
+  notify: start openresty
+
+- name: install LuaRocks
+  apt:
+    name: luarocks
+    state: latest
+
+- name: install lua-resty-auto-ssl
+  shell: "sudo luarocks install lua-resty-auto-ssl"
+
+- name: Make directory for certifcates
+  shell: "sudo mkdir /etc/resty-auto-ssl"
+
+- name: Give permissions to users
+  shell: "sudo chown root /etc/resty-auto-ssl"
+
+- name: Get Fallback Certificate
+  shell: "openssl req -new -newkey rsa:2048 -days 3650 -nodes -x509 \
+   -subj '/CN=sni-support-required-for-valid-ssl' \
+    -keyout /etc/ssl/resty-auto-ssl-fallback.key \
+   -out /etc/ssl/resty-auto-ssl-fallback.crt"
+
+- name: Remove Default nginx.conf
+  shell: "cd /etc/openresty && rm nginx.conf"
+
+- name: Add Openresty Lua Config
+  template:
+    src=nginx.conf.j2
+    dest=/etc/openresty/nginx.conf
+    owner=root
+    group=root
+
+  notify: reload openresty

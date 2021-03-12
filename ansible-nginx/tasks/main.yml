@@ -5,7 +5,7 @@
     state: latest
     update_cache: true
 
-  notify: start nginx
+  notify: stop nginx
 
 - name: install certbot for nginx
   apt:

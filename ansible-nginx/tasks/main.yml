@@ -54,6 +54,3 @@
   with_dict: "{{ nginx_revproxy_sites }}"
 
   notify: reload nginx
-
-
-  http://172.105.49.38/assets/application-226c73b959b5087f4dbd210d18c905958c8491ddd0d51c8bec8ec713947142dd.css

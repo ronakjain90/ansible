@@ -1,0 +1,16 @@
+---
+
+- name: reload openresty
+  service:
+    name: openresty
+    state: restarted
+
+- name: start openresty
+  service:
+    name: openresty
+    state: started
+
+- name: stop openresty
+  service:
+    name: openresty
+    state: stopped

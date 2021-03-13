@@ -18,7 +18,6 @@
 # Run Playbook
   Run this command to run the playbook:
 
-  `ansible-playbook -i 'ipaddress,' main.yml` or
   `ansible-playbook -i inventory main.yml`
 
   Place your `inventory` file in the directory you wish to your ansible commands in the following format
@@ -66,8 +65,3 @@
   ```
 
   Add/Remove sites from the `nginx_revproxy_sites` variable specifed in the main.yml. Specify `socket: true `if your site is using socket connections.
-  
-  
-  
-  https://roameo.club/assets/application-226c73b959b5087f4dbd210d18c905958c8491ddd0d51c8bec8ec713947142dd.css
-  http://172.105.49.38/assets/application-226c73b959b5087f4dbd210d18c905958c8491ddd0d51c8bec8ec713947142dd.css
